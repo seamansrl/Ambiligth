@@ -1,0 +1,130 @@
+{
+  "interfaz":
+  {
+   "Width": 1920,
+   "Height": 1080,
+   "Rotation": 0,
+   "BackgroundVideo": "C:\\Ambiligth\\colors.mp4",
+   "BackgroundVideoLoop": true,
+   "Ambilight": true,
+   "DisableFullScreen": true,
+   "AmbilightLeds":
+    [   
+      {"pin": 1, "length": 8,"position": "top"},
+      {"pin": 2, "length": 24,"position": "lineal"},
+      {"pin": 3, "length": 8,"position": "left"}
+    ],
+    "Leds":
+    [   
+      {"pin": 1, "length": 4},
+      {"pin": 2, "length": 4},
+      {"pin": 3, "length": 4},
+      {"pin": 4, "length": 4},
+      {"pin": 5, "length": 4},
+      {"pin": 6, "length": 4},
+      {"pin": 7, "length": 4},
+      {"pin": 8, "length": 4}
+    ],
+   "VirtualButtons":
+    [
+      {
+        "name": "btnRojo",
+        "Index": 0,
+        "ImagePath": "",
+        "X": 10,
+        "Y": 10,
+        "Width": 200,
+        "Height": 200,
+        "Enabled": true
+      }
+      ,
+      {
+        "name": "btnVerde",
+        "Index": 1,
+        "ImagePath": "",
+        "X": 250,
+        "Y": 10,
+        "Width": 200,
+        "Height": 200,
+        "Enabled": true
+      }
+    ]
+  }
+  ,
+  "rules": [
+
+    {
+      "name": "Starting",
+      "events": {
+        "Start": true
+      }
+      ,
+      "actions": [
+        {"type": "setVar","var": "Started","varValue": 1},
+        {"type": "setVar","var": "secuencia","varValue": 0},
+        { "type": "changeButtonImage","target": "btnRojo","image": "btnOn.png" }
+      ]
+    }
+    ,
+    {
+      "name": "Secuencia",
+      "events": {
+        "buttonPresses": [
+          { "name": "btnRojo", "value": 1 }
+        ]
+        ,
+        "serialPins": 
+        [
+          { "kind": "D", "pin": 40, "value": 1 }
+        ]
+      },
+      "conditions": {
+        "virtualVars": [
+          {
+            "name": "secuencia",
+            "value": 0
+          }
+        ],
+        "digitalInputs": [
+          {
+            "pin": 41,
+            "value": 1
+          }
+        ]
+      }
+      ,
+      "actions": [
+        {"type": "setVar","var": "secuencia","varValue": 1},
+        {"type": "changeButtonImage","target": "btnRojo","image": "btn1n.png" },
+        {"type": "showvideo","file": "C:\\Ambiligth\\cargando.mp4","loop": true},
+
+        {"type": "Led","pin": 1,"fx": 1, "length": 8},
+        {"type": "Led","pin": 2,"fx": 6, "length": 0},
+
+        {"type": "delay","Value": "1000"},
+        {"type": "Led","pin": 1,"fx": 0,"length": 64},
+        {"type": "Led","pin": 2,"fx": 0,"length": 64},
+        {"type": "delay","Value": "100"},
+        {"type": "Led","pin": 1,"fx": 2,"length": 64},
+        {"type": "Led","pin": 2,"fx": 2,"length": 64},
+        
+
+        {"type": "digitalWrite","pin": 22, "value": 0,"duration": 10000},
+
+        {"Type": "delay","Value": "10000"},
+        
+        {"type": "Led","pin": 1,"fx": 1,"length": 64},
+        {"Type": "stopvideo"},
+        {"Type":"runplugin","file":"Plugin_1.dll"},
+        {"Type": "delay","Value": "5000"},
+        {"Type":"stopplugin","file":"Plugin_1.dll"},
+        {"type": "Led","pin": 1,"fx": 0,"length": 64},
+        {"type": "Led","pin": 2,"fx": 0,"length": 64},
+
+        {"type": "showvideo","file": "C:\\Ambiligth\\philips.mp4","loop": true},
+        { "type": "changeButtonImage","target": "btnRojo","image": "btnOn.png" },
+        {"type": "setVar","var": "secuencia","varValue": 0}
+      ]
+    }
+  ]
+}
