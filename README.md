@@ -142,4 +142,15 @@ Envía datos en bloques de 128 caracteres y espera confirmación de respuesta (`
 
 ---
 
+NOTA: En el fuente C# vamos a encontrar al comuenzo de todo esta lina:
+
+**`int LedsTotales = 24;`**
+
+Indica la cantidad de leds que tiene la tira. Es muy importante modificar este parametro por los leds puestos al rededor de la pantalla de forma que el programa calcule bien las dimensiones y distribuja los colores de forma correcta.
+
+Ademas incluyo un STL para hacer de soporte de los leds cortecia de **patricksnitjer0** (MakerWorld)[https://makerworld.com/es/@patricksnitjer0]
+
+![Flujo del Sistema](c655a209-0047-43d6-acc4-74b345dee0fc.png)
+
+
 
