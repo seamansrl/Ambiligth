@@ -10,7 +10,7 @@ Consta de dos partes:
 
 ## Diagrama de Flujo
 
-![Flujo del Sistema]c655a209-0047-43d6-acc4-74b345dee0fb.png)
+![Flujo del Sistema](c655a209-0047-43d6-acc4-74b345dee0fb.png)
 
 ---
 
