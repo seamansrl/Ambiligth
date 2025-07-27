@@ -1,5 +1,7 @@
 # Ambilight PC + Arduino
 
+[video presentacion](d5f04e0c-d4d9-473f-94ba-93e4ff1457ed.mov)
+
 ![Presentación](c655a209-0047-43d6-acc4-74b345dee0fa.jpeg)
 
 Este proyecto implementa un **efecto Ambilight** que replica en una tira de LEDs WS2812 (NeoPixel) los colores predominantes en los bordes de la pantalla de tu PC.  
